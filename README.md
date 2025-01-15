@@ -26,7 +26,9 @@ apptainer build superpoint_dinov2.sif superpoint_dinov2.def
 The main workflow is demonstrated in `process_image.py`. Here's a basic example of how to use the feature matcher:
 
 ```python
-# Example code will be added based on process_image.py implementation
+# Example code will be added based on scripts/process_image.py implementation
+
+
 ```
 
 ### Key Components
@@ -38,9 +40,9 @@ The main workflow is demonstrated in `process_image.py`. Here's a basic example 
 
 ## Features
 
-- Combines state-of-the-art keypoint detection with self-supervised visual features
+- Combines keypoint detection with self-supervised visual features
 - Fast similarity search using FAISS
-- Robust outlier removal with RANSAC
+- Outlier removal with RANSAC
 - Containerized environment for easy deployment
 
 ## Results
