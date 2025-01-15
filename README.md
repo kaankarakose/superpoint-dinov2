@@ -22,7 +22,7 @@ apptainer build superpoint_dinov2.sif superpoint_dinov2.def
 ```
 OR, use provided scripts named `builder.sh`
 ```bash
-    bash builder.sh
+bash builder.sh
 ```
 3. Launch container
 ```bash
@@ -30,14 +30,14 @@ OR, use provided scripts named `builder.sh`
 ```
 4. In the container run:
 ```bash
-    conda init
-    source /opt/conda/etc/profile.d/conda.sh
-    conda activate dinov2
+conda init
+source /opt/conda/etc/profile.d/conda.sh
+conda activate dinov2
 ```
 5. Clone the repo:
 ```
-    git clone git@github.com:kaankarakose/superpoint-dinov2.git
-    cd superpoint-dinov2
+git clone git@github.com:kaankarakose/superpoint-dinov2.git
+cd superpoint-dinov2
 ```
 
 ## Usage
