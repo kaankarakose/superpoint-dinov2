@@ -108,7 +108,7 @@ If you use this code in your research, please cite:
 @misc{superpoint-dinov2,
     author = {Kaan Karakose},
     title = {SuperPoint Keypoints with DINOv2 Descriptors},
-    year = {2024},
+    year = {2025},
     publisher = {GitHub},
     journal = {GitHub repository},
     howpublished = {https://github.com/kaankarakose/superpoint-dinov2}
