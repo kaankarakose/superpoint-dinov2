@@ -20,7 +20,13 @@ This project uses Apptainer (formerly Singularity) for containerization to ensur
 ```bash
 apptainer build superpoint_dinov2.sif superpoint_dinov2.def
 ```
-3. In the container run:
+    OR, use provided scripts named `builder.sh`
+    
+```
+    bash builder.sh
+```
+3. Launch container using `launcher.sh`
+4. In the container run:
 ```bash
     conda init
     source /opt/conda/etc/profile.d/conda.sh
