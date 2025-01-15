@@ -63,11 +63,11 @@ def plot_keypoint_matches(img1, img2, keypoints1, keypoints2, matches, output_pa
         # Draw connecting line
         plt.plot([pt_1[0], pt_2_adjusted[0]], 
                 [pt_1[1], pt_2_adjusted[1]], 
-                'c-', linewidth=0.5, alpha=0.3)
+                'c-', linewidth=1, alpha=0.6)
         
         # Draw keypoints
-        plt.plot(pt_1[0], pt_1[1], 'ro', markersize=2)
-        plt.plot(pt_2_adjusted[0], pt_2_adjusted[1], 'ro', markersize=2)
+        plt.plot(pt_1[0], pt_1[1], 'ro', markersize=4)
+        plt.plot(pt_2_adjusted[0], pt_2_adjusted[1], 'ro', markersize=4)
     
     # Remove axes
     plt.axis('off')

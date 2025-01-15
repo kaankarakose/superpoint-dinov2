@@ -170,6 +170,41 @@ def visualize_keypoints(image, keypoints):
         cv2.circle(vis_image, (x, y), radius=2, color=(0, 255, 0), thickness=-1)
     
     return vis_image
+def filter_matches_with_ransac(keypoints1, keypoints2, matches, threshold=3.0):
+    """
+    Filter feature matches using RANSAC to remove outliers.
+    
+    Parameters:
+    keypoints1: List of keypoints from first image
+    keypoints2: List of keypoints from second image
+    matches: List of DMatch objects containing the matches between keypoints
+    threshold: RANSAC threshold for considering a point as an inlier
+    
+    Returns:
+    filtered_matches: List of DMatch objects containing only inlier matches
+    """
+    
+    # Extract matched keypoints
+    src_pts = np.float32([keypoints1[m[0]] for m in matches]).reshape(-1, 1, 2)
+    dst_pts = np.float32([keypoints2[m[1]] for m in matches]).reshape(-1, 1, 2)
+    
+    # Find homography using RANSAC
+    homography_matrix, mask = cv2.findHomography(
+        src_pts, 
+        dst_pts, 
+        cv2.RANSAC,
+        threshold
+    )
+    
+    # Convert mask to boolean array
+    mask = mask.ravel().tolist()
+    
+    # Filter matches using the mask
+    filtered_matches = [m for i, m in enumerate(matches) if mask[i]]
+    
+    return filtered_matches
+
+
 
 if __name__ == "__main__":
     
@@ -186,7 +221,7 @@ if __name__ == "__main__":
     
     
     superpoint_extractor = SuperPointFeatureExtractor()
-    dino_extractor = DistributedDinov2FeatureExtractor(model_name='dinov2_vitg14')
+    dino_extractor = DistributedDinov2FeatureExtractor(model_name='dinov2_vits14')
     processor = ImageFeatureProcessor(dino_extractor, superpoint_extractor)
     image1_path = '/ados/object-pose-feature-based/test_images/image0.jpg'
     image2_path = '/ados/object-pose-feature-based/test_images/image1.jpg'
@@ -204,20 +239,21 @@ if __name__ == "__main__":
 
     
 
+    
+    matches, distances = improved_feature_matching(img1_feature['descriptors'], img2_feature['descriptors'], threshold=0.6)
+    
+    filtered_matches = filter_matches_with_ransac(img1_feature['keypoints'], img2_feature['keypoints'], matches, threshold=5.0)
+    print(filtered_matches)
+    plot_keypoint_matches(img1, img2, img1_feature['keypoints'], img2_feature['keypoints'], filtered_matches, output_path='./src/matches.png')
+    
+    
     #similarities = calculate_similarities(img0_feature['descriptors'], img1_feature['descriptors'])
-    
-    matches, distances = improved_feature_matching(img1_feature['descriptors'], img2_feature['descriptors'], threshold=0.9)
-    
-    print(matches.shape)
-    plot_keypoint_matches(img1, img2, img1_feature['keypoints'], img2_feature['keypoints'], matches, output_path='matches.png')
-    
-    
     #top_indices, top_scores = get_top_k_matches(similarities, k=5)
     
     
     
     
-    # # First, create some basic visualizations
+ #   First, create some basic visualizations
     # plot_similarity_heatmap(similarities, sample_size=100)  # Sample 100 points if matrix is large
     # plot_similarity_distribution(similarities)
 
