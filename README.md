@@ -2,6 +2,14 @@
 
 This repository combines SuperPoint keypoint detection with DINOv2 descriptors for robust feature matching. The project leverages the strengths of both approaches: SuperPoint's accurate keypoint detection and DINOv2's powerful self-supervised visual features.
 
+## Results
+
+Below is an example of feature matching results using our SuperPoint-DINOv2 combination:
+
+![Feature Matching Result](output/matches.png)
+
+The image above demonstrates the matching between two images using SuperPoint keypoints and DINOv2 descriptors, with RANSAC filtering to remove outliers.
+
 ## Overview
 
 The project works by:
@@ -81,13 +89,6 @@ plot_keypoint_matches(img1, img2, img1_feature['keypoints'], img2_feature['keypo
 - Outlier removal with RANSAC
 - Containerized environment for easy deployment
 
-## Results
-
-Below is an example of feature matching results using our SuperPoint-DINOv2 combination:
-
-![Feature Matching Result](output/matches.png)
-
-The image above demonstrates the matching between two images using SuperPoint keypoints and DINOv2 descriptors, with RANSAC filtering to remove outliers.
 
 ## TODO
 - [ ] Clear the unused functions
