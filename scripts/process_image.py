@@ -137,40 +137,28 @@ def filter_matches_with_ransac(keypoints1, keypoints2, matches, threshold=3.0):
 if __name__ == "__main__":
     
     
-    # superpoint_extractor = SuperPointFeatureExtractor()
-    # dino_extractor = DistributedDinov2FeatureExtractor(model_name='dinov2_vitg14_reg')
-    # processor = ImageFeatureProcessor(dino_extractor, superpoint_extractor)
-    # output_dir = '/ados/dino_features/rendered'
-    # processor.load_and_process_directory(
-    #     '/ados/ados2-object-recordings/MAKE-BELIEVE',
-    #     save_dir=output_dir
-    # )
-    # raise ValueError
-    
+   
     
     superpoint_extractor = SuperPointFeatureExtractor()
     dino_extractor = DistributedDinov2FeatureExtractor(model_name='dinov2_vits14')
     processor = ImageFeatureProcessor(dino_extractor, superpoint_extractor)
-    image1_path = '/ados/object-pose-feature-based/test_images/image0.jpg'
-    image2_path = '/ados/object-pose-feature-based/test_images/image1.jpg'
-    
+    image1_path = './test_images/image0.jpg'
+    image2_path = './test_images/image1.jpg'
+    #reading image as numpy array
     img1 = cv.imread(image1_path)          
     img2 = cv.imread(image2_path)  
     
-
-    
+    # get keypoints and its corresponded descriptors from Dinov2
     img1_feature = processor.process_single_image(image1_path)
-    
     img2_feature = processor.process_single_image(image2_path)
  
     #vis_key_1 = visualize_keypoints(img1, img0_feature['keypoints'] )
-
     
-
-    
+    # get similarities
     matches, distances = improved_feature_matching(img1_feature['descriptors'], img2_feature['descriptors'], threshold=0.6)
-    
+    # use RANSAC to discard outliers
     filtered_matches = filter_matches_with_ransac(img1_feature['keypoints'], img2_feature['keypoints'], matches, threshold=5.0)
+    #plot final result
     plot_keypoint_matches(img1, img2, img1_feature['keypoints'], img2_feature['keypoints'], filtered_matches, output_path='./src/matches.png')
     
     

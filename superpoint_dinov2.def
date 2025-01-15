@@ -11,13 +11,9 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
     export PATH=/usr/local/cuda/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/lib:$LD_LIBRARY_PATH
     export CUDA_HOME=/usr/local/cuda
-
-%environment
     export LC_ALL=C
     export PATH=/opt/conda/bin:$PATH
     
-
-
 %post
     # Install system dependencies
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
@@ -120,11 +116,7 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
     conda install -c anaconda ipykernel
     conda install jupyter
     pip install scikit-image imageio plotly
-    
     conda install -c pytorch faiss-cpu=1.9.0
-    
-    pip install scipy
-  
     pip install transformers
 
     # add current env to 
@@ -141,5 +133,4 @@ From: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 %labels
     Author Kaan Karakose
-    Version v1.0
     Description DINOv2 container with PyTorch 2.0 

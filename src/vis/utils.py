@@ -77,8 +77,6 @@ def plot_keypoint_matches(img1, img2, keypoints1, keypoints2, matches, output_pa
     plt.savefig(output_path, bbox_inches='tight', dpi=300)
     plt.close()
 
-    return combined_img
-
 
 def visualize_keypoints(image, keypoints):
     # Assuming keypoints are in (x,y) format

@@ -124,7 +124,6 @@ class DistributedDinov2FeatureExtractor:
         if isinstance(features, torch.Tensor):
             return features.detach().numpy()#[0].squeeze(0).cpu().detach().numpy()
         else:
-            print('here')
             stacked_features = torch.stack(features)
 
             return stacked_features.cpu().squeeze(1).detach().numpy()
