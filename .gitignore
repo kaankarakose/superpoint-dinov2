@@ -5,6 +5,7 @@ setup.sh
 third_party
 tmp.txt
 .nfs000000000b3cde8500000016
+.nfs000000000b3cde8500000016
 .nfs*
 # Python
 __pycache__/
