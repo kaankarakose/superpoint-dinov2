@@ -4,6 +4,8 @@ notebooks/
 setup.sh
 third_party
 tmp.txt
+
+.nfs*
 # Python
 __pycache__/
 *.py[cod]
