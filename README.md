@@ -110,7 +110,6 @@ If you use this code in your research, please cite:
     title = {SuperPoint Keypoints with DINOv2 Descriptors},
     year = {2025},
     publisher = {GitHub},
-    journal = {GitHub repository},
     howpublished = {https://github.com/kaankarakose/superpoint-dinov2}
 }
 ```
