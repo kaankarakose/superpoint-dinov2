@@ -104,16 +104,16 @@ Feel free to open issues or submit pull requests. Contributions are welcomed!
 ## Citation
 
 If you use this code in your research, please cite:
-
-```bibtex
+```
 @misc{superpoint-dinov2,
     author = {Kaan Karakose},
     title = {SuperPoint Keypoints with DINOv2 Descriptors},
     year = {2024},
     publisher = {GitHub},
     journal = {GitHub repository},
-    howpublished = {\url{git@github.com:kaankarakose/superpoint-dinov2.git}}
+    howpublished = {https://github.com/kaankarakose/superpoint-dinov2}
 }
+```
 ## License
 
 This project is licensed under the MIT License.
