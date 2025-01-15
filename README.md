@@ -106,7 +106,8 @@ Feel free to open issues or submit pull requests. Contributions are welcomed!
 This project is licensed under the MIT License.
 
 ## Acknowledgments
-
-- [SuperPoint](https://github.com/magicleap/SuperPointPretrainedNetwork) implementation
-- [DINOv2](https://github.com/facebookresearch/dinov2) team
-- [FAISS](https://github.com/facebookresearch/faiss) library
+Many thanks to these great works!
+- [SuperPoint](https://github.com/magicleap/SuperPointPretrainedNetwork)
+- [DINOv2](https://github.com/facebookresearch/dinov2) 
+- [FAISS](https://github.com/facebookresearch/faiss)
+  
