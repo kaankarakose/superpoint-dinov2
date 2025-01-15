@@ -20,6 +20,12 @@ This project uses Apptainer (formerly Singularity) for containerization to ensur
 ```bash
 apptainer build superpoint_dinov2.sif superpoint_dinov2.def
 ```
+3. In the container run:
+```bash
+    conda init
+    source /opt/conda/etc/profile.d/conda.sh
+    conda activate dinov2
+```
 
 ## Usage
 
@@ -27,8 +33,25 @@ The main workflow is demonstrated in `process_image.py`. Here's a basic example 
 
 ```python
 # Example code will be added based on scripts/process_image.py implementation
+superpoint_extractor = SuperPointFeatureExtractor()
+dino_extractor = DistributedDinov2FeatureExtractor(model_name='dinov2_vits14')
+processor = ImageFeatureProcessor(dino_extractor, superpoint_extractor)
+image1_path = './test_images/image0.jpg'
+image2_path = './test_images/image1.jpg'
+#reading image as numpy array
+img1 = cv.imread(image1_path)          
+img2 = cv.imread(image2_path)  
 
+# get keypoints and its corresponded descriptors from Dinov2
+img1_feature = processor.process_single_image(image1_path)
+img2_feature = processor.process_single_image(image2_path)
 
+# get similarities
+matches, distances = improved_feature_matching(img1_feature['descriptors'], img2_feature['descriptors'], threshold=0.6)
+# use RANSAC to discard outliers
+filtered_matches = filter_matches_with_ransac(img1_feature['keypoints'], img2_feature['keypoints'], matches, threshold=5.0)
+#plot final result
+plot_keypoint_matches(img1, img2, img1_feature['keypoints'], img2_feature['keypoints'], filtered_matches, output_path='./output/matches.png')  
 ```
 
 ### Key Components
@@ -63,12 +86,11 @@ The image above demonstrates the matching between two images using SuperPoint ke
 
 ## Contributing
 
-Feel free to open issues or submit pull requests. We welcome contributions to improve the project!
+Feel free to open issues or submit pull requests. Contributions are welcomed!
 
 ## License
 
 This project is licensed under the MIT License.
-
 
 ## Acknowledgments
 
