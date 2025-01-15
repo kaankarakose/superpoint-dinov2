@@ -28,7 +28,7 @@ bash builder.sh
 ```bash
  bash launcher.sh
 ```
-4. In the container run:
+4. In the container, run:
 ```bash
 conda init
 source /opt/conda/etc/profile.d/conda.sh
