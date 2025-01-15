@@ -20,9 +20,7 @@ This project uses Apptainer (formerly Singularity) for containerization to ensur
 ```bash
 apptainer build superpoint_dinov2.sif superpoint_dinov2.def
 ```
-
-    OR, use provided scripts named `builder.sh`
-
+OR, use provided scripts named `builder.sh`
 ```bash
     bash builder.sh
 ```
