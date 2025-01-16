@@ -21,7 +21,7 @@ The project works by:
 
 ## Installation
 
-This project uses Apptainer (formerly Singularity) for containerization to ensure reproducibility and easy setup. To install:
+This project uses Apptainer for containerization to ensure reproducibility and easy setup. To install:
 
 1. First, ensure you have Apptainer installed on your system
 2. Build the container using the provided definition file:
