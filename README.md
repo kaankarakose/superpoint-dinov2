@@ -8,7 +8,7 @@ Below is an example of feature matching results using our SuperPoint-DINOv2 comb
 
 ![Feature Matching Result](output/matches.png)
 
-The image above demonstrates the matching between two images using SuperPoint keypoints and DINOv2 descriptors, with RANSAC filtering to remove outliers.
+The image demonstrates the matching between two images using SuperPoint keypoints and DINOv2 descriptors, with RANSAC filtering to remove outliers.
 
 ## Overview
 
