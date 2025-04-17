@@ -107,7 +107,7 @@ Feel free to open issues or submit pull requests. Contributions are welcomed!
 If you use this code in your research, please cite:
 ```
 @misc{superpoint-dinov2,
-    author = {Kaan Karakose},
+    author = {Kaan Karakose, Andras Lorincz},
     title = {SuperPoint Keypoints with DINOv2 Descriptors},
     year = {2025},
     publisher = {GitHub},
